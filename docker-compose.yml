@@ -1,6 +1,8 @@
 services:
-  ruby:
-    image: ruby:3.3
+  app:
+    build: .
     tty: true
+    ports:
+      - 3000:3000
     volumes:
-      - ./src:/src
+      - ./src:/app
