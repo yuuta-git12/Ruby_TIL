@@ -32,3 +32,8 @@ buy_burger('fish', drink: false)
 buy_burger('big', potato: true, drink: true)
 
 buy_burger('big', potato: true, drink: true, chicken: false)
+
+# ハッシュを変数として宣言しメソッドの引数に渡す
+params = {potato: true, drink: true, chicken: false}
+# **をつけることで、ハッシュをキーワード引数に変換できる
+buy_burger('cheese', **params)
