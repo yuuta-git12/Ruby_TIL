@@ -37,3 +37,15 @@ buy_burger('big', potato: true, drink: true, chicken: false)
 params = {potato: true, drink: true, chicken: false}
 # **をつけることで、ハッシュをキーワード引数に変換できる
 buy_burger('cheese', **params)
+
+def buy_burger2(menu, options={})
+  puts options
+end
+
+# どちらも同じ結果を出力する(あくまで「最後の引数がハッシュであれば」)
+buy_burger2('fish', {'drink' => true, 'potato' => false})
+buy_burger2('fish', 'drink' => true, 'potato' => false)
+
+# Rubyはメソッド呼び出しの()を省略できる(上記の文と同じ結果)
+buy_burger2 'fish', {'drink' => true, 'potato' => false}
+buy_burger2 'fish', 'drink' => true, 'potato' => false
