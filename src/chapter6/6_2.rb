@@ -92,4 +92,39 @@ def regexp_gsub()
   p text.gsub(/,|-/,rule)
 end
 
-regexp_gsub()
+
+
+# case文で正規表現を使う場合
+def regexp_case(text)
+  case text
+  when /^\d{3}-\d{4}$/
+    puts '郵便番号です'
+  when %r{^\d{4}/\d{1,2}/\d{1,2}$}
+    puts '日付です'
+  when /^\d+-\d+-\d+$/
+    puts '電話番号です'
+  end
+end
+
+regexp_case("03-1234-2222")
+regexp_case("333-1234")
+regexp_case("1999/11/22")
+
+# Rexexp.last_matchメソッドでマッチの結果を取得する
+def regexp_last_match()
+  text = '私の誕生日は1977年7月7日です'
+  text =~ /(\d{4})年(\d{1,2})月(\d{1,2})日/
+  Regexp.last_match
+  puts Regexp.last_match(0) # 1977年7月7日
+  puts Regexp.last_match(1) # 1977
+  puts Regexp.last_match(2) # 7
+  puts Regexp.last_match(3) # 7
+end
+
+# match?メソッドを使った場合(書き換えを行わないのでmatchメソッドより高速)
+def regexp_match_question()
+  puts /\d{3}-\d{4}/.match?('123-4567')
+
+end
+
+regexp_match_question()
