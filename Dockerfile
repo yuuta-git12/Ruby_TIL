@@ -1,5 +1,5 @@
 FROM ruby:3.3
-# -qqはログを表示させないためのオプション
+# apt-get update -qq:Linuxでインストール可能なパッケージの「一覧」を更新する(インストール、アップデートはしない)
 RUN apt-get update -qq && apt-get install -y build-essential libpq-dev nodejs
 WORKDIR /app
 COPY Gemfile /app/Gemfile
